@@ -17,14 +17,14 @@ const factionColors: { [key: string]: string } = {
   'Admin': 'text-red-500',
   'SAPD': 'text-blue-500',
   'SAFD': 'text-pink-500',
-  'SANNEWS': 'text-yellow-500',
+  'SANews': 'text-yellow-500',
 };
 
 const BackgroundRoleColors: { [key: string]: string } = {
   'Admin': 'bg-red-700',
   'SAPD': 'bg-blue-700',
   'SAFD': 'bg-pink-700',
-  'SANNEWS': 'bg-yellow-700',
+  'SANews': 'bg-yellow-700',
 };
 
 export function UserProfile({ user }: UserProfileProps) {
