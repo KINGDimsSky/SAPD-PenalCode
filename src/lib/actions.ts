@@ -52,26 +52,27 @@ export interface UpdateProfileState {
 }
 
 export const updateUserProfile = async (prevState: UpdateProfileState, formData: FormData): Promise<UpdateProfileState> => {
-  const { nickname } = Object.fromEntries(formData.entries());
-
+  const { nickname, faction, rank, badge } = Object.fromEntries(formData.entries());
+  
   try {
     const session = await getServerSession(authOptions);
     if (!session?.user?.id) {
       return { error: "Anda harus login untuk melakukan ini." };
     }
-
     await connectToDB();
     
-    await User.findByIdAndUpdate(
-      session.user.id,
-      {
-        Nickname: nickname,
-        ifNewAccount: false,
-      }
-    );
+    const updateData = {
+      Nickname: nickname,
+      faction,
+      rank,
+      badge,
+      ifNewAccount: false,
+      // Soon ya buat image nya xixi
+    };
     
-    revalidatePath("/dashboard"); 
+    await User.findByIdAndUpdate(session.user.id, updateData);
     
+    revalidatePath("/dashboard");
     return { success: true };
 
   } catch (err) {

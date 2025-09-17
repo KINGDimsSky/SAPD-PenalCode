@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Home, Users, Shield, Crown } from 'lucide-react';
+import {Shield, Crown, UserPen, BookText, Scale} from 'lucide-react';
 
 const navItems = [
-  { href: "/dashboard", label: "Penal Code", icon: Home },
-  { href: "/dashboard/Employefile", label: "Employe File", icon: Users },
+  { href: "/dashboard", label: "Penal Code", icon: Scale },
+  { href: "/dashboard/Employefile", label: "Employe File", icon: BookText },
   { href: "/dashboard/factions", label: "Factions", icon: Shield },
+  { href: "/dashboard/setup-profile", label: "Profile", icon: UserPen },
   { href: "/dashboard/admin", label: "Admin", icon: Crown, adminOnly: true },
 ];
 
