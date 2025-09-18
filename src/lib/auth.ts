@@ -5,7 +5,7 @@ import { ValidateUser } from "@/lib/services";
 export const authOptions: NextAuthOptions = {
   session: { strategy: "jwt" },
   pages: {
-    signIn: "/",
+    signIn: "/login",
   },
   providers: [
     CredentialsProvider({

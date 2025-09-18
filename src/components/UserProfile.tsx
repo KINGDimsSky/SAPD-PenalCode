@@ -1,8 +1,9 @@
 'use client';
 
-import { LogOut } from "lucide-react";
+import { LogIn, LogOut } from "lucide-react";
 import { signOut } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 
 type UserProfileProps = {
   user?: {
@@ -35,32 +36,33 @@ export function UserProfile({ user }: UserProfileProps) {
   return (
     <div className="mt-auto p-4 border-t border-gray-200">
       <div className="flex items-center gap-3">
-        <Image
-          src={user?.image || "/user.png"}
-          alt={user?.Nickname || "User Avatar"}
+        <Image src={user?.image || "/user.png"} alt={user?.Nickname || "User Avatar"}
           width={40}
           height={40}
-          className="rounded-full"
-        />
+          className="rounded-full"/>
         <div className="text-sm">
           <p className={`font-semibold ${textColorClass}`}>
-            {user?.Nickname}
+            {user?.Nickname || 'Guest'} 
           </p>
           <div className="flex gap-4 mt-1">
-            <p className="text-xs text-gray-500">{user?.role}</p>
+            <p className="text-xs text-gray-500">{user?.role || 'Guest'}</p>
             <span className={`px-2 text-xs rounded-lg ${BackGroundClass}`}>
-              {user?.faction}
+              {user?.faction || 'Guest'}
             </span>
           </div>
         </div>
       </div>
-      <button
-        onClick={() => signOut({ callbackUrl: "/" })}
-        className="flex items-center gap-3 rounded-lg w-full px-3 py-2 mt-4 text-gray-500 transition-all duration-200 hover:text-red-600 hover:bg-red-100"
-      >
-        <LogOut className="h-4 w-4" />
-        Logout
-      </button>
+     {user ? (
+       <button onClick={() => signOut({ callbackUrl: "/" })} className="flex items-center gap-3 rounded-lg w-full px-3 py-2 mt-4 text-gray-500 transition-all duration-200 hover:text-red-600 hover:bg-red-100">
+         <LogOut className="h-4 w-4" />
+           Logout
+         </button>
+        ) : (
+        <Link href="/login" className="flex items-center gap-3 rounded-lg w-full px-3 py-2 mt-4 text-gray-500 transition-all duration-200 hover:text-amber-600 hover:bg-amber-100">
+          <LogIn className="h-4 w-4" />
+            SignIn
+          </Link>
+        )}
     </div>
   );
 }

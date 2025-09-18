@@ -1,9 +1,43 @@
+import { BookCheck, BookText, Crown, Home, Scale, Shield, UserPen } from "lucide-react";
+
 export interface Violation {
   code: string;
   name: string;
   jailtime: number;
   fine: number;
 }
+
+export interface NavSubItem {
+  href: string;
+  label: string;
+  requiredBadge?: string; 
+}
+
+export interface NavItem {
+  href?: string;
+  label: string;
+  icon: React.ElementType;
+  basePath?: string;
+  adminOnly?: boolean;
+  subItems?: NavSubItem[];
+}
+
+export const navItems: NavItem[] = [
+  { href: "/", label: "Home", icon: Home },
+  { href: "/publictools", label: "Public Tools", icon: BookCheck },
+  { 
+    label: "Factions", 
+    icon: Shield, 
+    basePath: "/factions",
+    subItems: [
+      { href: "/factions/penalcode", label: "Penal Code", requiredBadge: "SAPD" },
+      { href: "/factions/Employe-file", label: "EmployeFile", requiredBadge: "SAPD" },
+      { href: "/factions/sannewstools", label: "SanNews Tools", requiredBadge: "SANews"},
+    ]
+  },
+  { href: "/setup-profile", label: "Profile", icon: UserPen },
+  { href: "/admin", label: "Admin", icon: Crown, adminOnly: true },
+];
 
 export const penalCodeData: Violation[] = [
   { code: "1A1", name: "General Traffic Violation", jailtime: 0, fine: 250 },

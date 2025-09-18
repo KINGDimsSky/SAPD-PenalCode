@@ -97,7 +97,7 @@ export default function RegisterPage() {
         <div className="flex flex-col gap-2 mt-8 text-center">
           <p className="text-xs text-gray-500 tracking-tight">
             Already have an account?{" "}
-            <Link href="/" className="font-semibold hover:text-gray-700 transition-colors">
+            <Link href="/login" className="font-semibold hover:text-gray-700 transition-colors">
               Login
             </Link>
           </p>

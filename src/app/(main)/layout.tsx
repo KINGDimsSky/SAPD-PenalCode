@@ -1,6 +1,3 @@
-
-import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { NavLinks } from "@/components/NavLink";
 import MobileNav from "@/components/MobileNav";
@@ -22,7 +19,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
             <div className="text-lg font-semibold tracking-tight mt-1">San Andreas Portal</div>
           </div>
           <div className="flex-1">
-            <NavLinks userRole={session?.user?.role} />
+            <NavLinks userRole={session?.user?.role}  userBadge={session?.user?.badge}/>
           </div>
           <UserProfile user={session?.user} />
         </div>

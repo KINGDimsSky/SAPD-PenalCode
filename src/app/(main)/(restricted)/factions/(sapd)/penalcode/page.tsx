@@ -116,12 +116,10 @@ export default function PenalCodePage() {
           />
         </div>
 
-        {/* Arrest Command */}
         <div className="bg-white border border-gray-200 p-4 md:p-6 rounded-lg shadow-sm">
           <label
             htmlFor="arrestCommand"
-            className="block text-sm font-medium text-gray-700 mb-2"
-          >
+            className="block text-sm font-medium text-gray-700 mb-2">
             Arrest Command
           </label>
           <div className="flex gap-2">
@@ -142,16 +140,13 @@ export default function PenalCodePage() {
         </div>
       </div>
 
-      {/* Selected Violations */}
       <SelectedViolationsTable
         violations={selectedViolations}
-        onRemove={handleRemoveViolation}
-      />
+        onRemove={handleRemoveViolation}/>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
-        {/* Charges */}
         <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 md:p-6 space-y-4">
-          <h2 className="text-xl font-semibold text-gray-900">
+          <h2 className="text-xl font-semibold text-gray-900"> 
             Individual Charges
           </h2>
           {arrestDetails.charges.length > 0 ? (
@@ -165,12 +160,10 @@ export default function PenalCodePage() {
                     type="text"
                     value={charge.command}
                     className="py-1 px-2 rounded-lg w-full border border-gray-300 text-xs md:text-sm bg-gray-50"
-                    readOnly
-                  />
+                    readOnly/>
                   <button
                     className="py-1 px-3 rounded-lg bg-sky-500 hover:bg-sky-600 text-white text-xs"
-                    onClick={() => handleCopyToClipboard(charge.command)}
-                  >
+                    onClick={() => handleCopyToClipboard(charge.command)}>
                     <CopyIcon />
                   </button>
                 </div>
@@ -180,8 +173,6 @@ export default function PenalCodePage() {
             <p className="text-gray-400 pt-4">No Charges Selected.</p>
           )}
         </div>
-
-        {/* Tickets */}
         <div className="bg-white border border-gray-200 rounded-lg shadow-sm p-4 md:p-6 space-y-4">
           <h2 className="text-xl font-semibold text-gray-900">
             Individual Tickets
@@ -197,12 +188,10 @@ export default function PenalCodePage() {
                     type="text"
                     value={ticket.command}
                     className="py-1 px-2 rounded-lg w-full border border-gray-300 text-xs md:text-sm bg-gray-50"
-                    readOnly
-                  />
+                    readOnly/>
                   <button
                     className="py-1 px-3 rounded-lg bg-sky-500 hover:bg-sky-600 text-white text-xs"
-                    onClick={() => handleCopyToClipboard(ticket.command)}
-                  >
+                    onClick={() => handleCopyToClipboard(ticket.command)}>
                     <CopyIcon />
                   </button>
                 </div>
@@ -213,15 +202,12 @@ export default function PenalCodePage() {
           )}
         </div>
       </div>
-
-      {/* Violation List */}
       <ViolationList
         violations={filteredViolations}
         selectedCodes={selectedViolationCodes}
         searchTerm={searchTerm}
         onSearchChange={(e) => setSearchTerm(e.target.value)}
-        onAdd={handleAddViolation}
-      />
+        onAdd={handleAddViolation}/>
     </div>
   );
 }

@@ -72,7 +72,7 @@ export const updateUserProfile = async (prevState: UpdateProfileState, formData:
     
     await User.findByIdAndUpdate(session.user.id, updateData);
     
-    revalidatePath("/dashboard");
+    revalidatePath("/");
     return { success: true };
 
   } catch (err) {
