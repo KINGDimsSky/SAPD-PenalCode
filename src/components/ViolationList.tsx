@@ -11,13 +11,15 @@ interface Props {
 
 export function ViolationList({ violations, selectedCodes, searchTerm, onSearchChange, onAdd }: Props) {
   return (
-    <div className="bg-neutral-900 border border-neutral-800 rounded-lg shadow-md">
+    <div className="bg-white border border-gray-200 rounded-lg shadow-md">
       <div className="p-4 md:p-6">
-        <h2 className="text-xl font-semibold text-white">Violation List</h2>
-        <p className="text-sm text-neutral-400 mt-1">Cari dan tambahkan pelanggaran dari daftar di bawah ini.</p>
+        <h2 className="text-xl font-semibold text-gray-800">Violation List</h2>
+        <p className="text-sm text-gray-500 mt-1">
+          Cari dan tambahkan pelanggaran dari daftar di bawah ini.
+        </p>
         <input
           type="text"
-          className="input py-1 px-2  input-bordered w-full mt-4 bg-neutral-800 border-neutral-700 focus:border-green-500 focus:ring-green-500"
+          className="input py-1 px-2 input-bordered w-full mt-4 bg-white border-gray-300 focus:border-sky-500 focus:ring-sky-500"
           placeholder="Search by code or name..."
           value={searchTerm}
           onChange={onSearchChange}
@@ -25,28 +27,32 @@ export function ViolationList({ violations, selectedCodes, searchTerm, onSearchC
       </div>
       <div className="overflow-x-auto">
         <table className="table w-full">
-          <thead className="border-t border-b border-neutral-700">
+          <thead className="border-t border-b border-gray-200 bg-gray-50">
             <tr>
-              <th className="bg-neutral-800/50 p-4 text-left text-xs font-medium text-neutral-400 uppercase tracking-wider">#</th>
-              <th className="bg-neutral-800/50 p-4 text-left text-xs font-medium text-neutral-400 uppercase tracking-wider">Violation</th>
-              <th className="bg-neutral-800/50 p-4 text-left text-xs font-medium text-neutral-400 uppercase tracking-wider">Jailtime</th>
-              <th className="bg-neutral-800/50 p-4 text-left text-xs font-medium text-neutral-400 uppercase tracking-wider">Fine</th>
-              <th className="bg-neutral-800/50 p-4 text-left text-xs font-medium text-neutral-400 uppercase tracking-wider">Action</th>
+              <th className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">#</th>
+              <th className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Violation</th>
+              <th className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Jailtime</th>
+              <th className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fine</th>
+              <th className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
             </tr>
           </thead>
-          <tbody className="bg-neutral-900">
+          <tbody className="bg-white">
             {violations.map((v) => {
               const isAdded = selectedCodes.has(v.code);
               return (
-                <tr key={v.code} className="hover:bg-neutral-800/50 border-b border-neutral-800">
-                  <td className="p-4 max-w-xs truncate whitespace-nowrap text-sm font-mono text-neutral-300">{v.code}</td>
-                  <td className="p-4 max-w-xs truncate whitespace-nowrap text-sm">{v.name}</td>
-                  <td className="p-4 max-w-xs truncate whitespace-nowrap text-sm">{v.jailtime} min</td>
-                  <td className="p-4 max-w-xs truncate whitespace-nowrap text-sm">${v.fine.toLocaleString('id-ID')}</td>
+                <tr key={v.code} className="hover:bg-gray-50 border-b border-gray-200">
+                  <td className="p-4 max-w-xs truncate whitespace-nowrap text-sm font-mono text-gray-700">{v.code}</td>
+                  <td className="p-4 max-w-xs truncate whitespace-nowrap text-sm text-gray-700">{v.name}</td>
+                  <td className="p-4 max-w-xs truncate whitespace-nowrap text-sm text-gray-700">{v.jailtime} min</td>
+                  <td className="p-4 max-w-xs truncate whitespace-nowrap text-sm text-gray-700">
+                    ${v.fine.toLocaleString('id-ID')}
+                  </td>
                   <td className="p-4 max-w-xs truncate whitespace-nowrap text-sm">
-                    <button className="btn py-1 px-2 rounded-lg btn-sm bg-green-600 hover:bg-green-700 text-white border-none disabled:bg-neutral-700 disabled:text-neutral-400"
+                    <button
+                      className="btn py-1 px-2 rounded-lg btn-sm bg-sky-500 hover:bg-sky-600 text-white border-none disabled:bg-gray-300 disabled:text-gray-500"
                       onClick={() => onAdd(v)}
-                      disabled={isAdded}>
+                      disabled={isAdded}
+                    >
                       {isAdded ? 'Added' : 'Add'}
                     </button>
                   </td>

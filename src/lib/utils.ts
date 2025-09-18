@@ -1,10 +1,10 @@
 import { Metadata } from "next";
 
 export function constructMetadata({
-  title = 'Velocity Penalcode Faction',
+  title = 'San Andreas Portal',
   description = 'PENALCODE OR DASHBOARD FOR VELOCITY ROLEPLAY POWERED BY DIMSSKY',
-  image = '/og-image.png',
-  icons = '/logo.png',
+  image = '/sagov.png',
+  icons = '/sagov.png',
   noIndex = false,
 }: {
   title?: string;
