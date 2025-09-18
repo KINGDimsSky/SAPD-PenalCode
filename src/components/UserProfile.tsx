@@ -11,6 +11,7 @@ type UserProfileProps = {
     image?: string | null;
     role?: string | null;
     faction?: string | null;
+    badge?: string | null;
   };
 };
 
@@ -29,9 +30,9 @@ const BackgroundRoleColors: { [key: string]: string } = {
 };
 
 export function UserProfile({ user }: UserProfileProps) {
-  const textColorClass = factionColors[user?.faction || ""] || "text-gray-700";
+  const textColorClass = factionColors[user?.badge || ""] || "text-gray-700";
   const BackGroundClass =
-    BackgroundRoleColors[user?.faction || ""] || "bg-gray-300 text-gray-700";
+    BackgroundRoleColors[user?.badge || ""] || "bg-gray-300 text-gray-700";
 
   return (
     <div className="mt-auto p-4 border-t border-gray-200">
@@ -47,7 +48,7 @@ export function UserProfile({ user }: UserProfileProps) {
           <div className="flex gap-4 mt-1">
             <p className="text-xs text-gray-500">{user?.role || 'Guest'}</p>
             <span className={`px-2 text-xs rounded-lg ${BackGroundClass}`}>
-              {user?.faction || 'Guest'}
+              {user?.badge || 'Guest'}
             </span>
           </div>
         </div>

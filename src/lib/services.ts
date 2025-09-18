@@ -1,6 +1,7 @@
 import { connectToDB } from "./db";
 import { User } from "@/lib/models";
 import bcrypt from "bcryptjs";
+import { IUser } from "./types";
 
 export const ValidateUser = async (username: string, password_from_form: string) => {
   try {
@@ -27,5 +28,16 @@ export const ValidateUser = async (username: string, password_from_form: string)
   } catch (error) {
     console.error("Error saat validasi user:", error);
     return null;
+  }
+};
+
+export const getAllUsers = async () : Promise<IUser[]> => {
+  try {
+    await connectToDB();
+    const users = await User.find({}).lean<IUser[]>();
+    return users;
+  } catch (error) {
+    console.error("Failed to fetch users:", error);
+    throw new Error("Failed to fetch users.");
   }
 };

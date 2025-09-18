@@ -1,4 +1,4 @@
-import { BookCheck, BookText, Crown, Home, Scale, Shield, UserPen } from "lucide-react";
+import { BookCheck, Crown, Home, Shield, UserPen } from "lucide-react";
 
 export interface Violation {
   code: string;

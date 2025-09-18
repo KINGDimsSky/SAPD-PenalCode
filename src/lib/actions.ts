@@ -80,3 +80,22 @@ export const updateUserProfile = async (prevState: UpdateProfileState, formData:
     return { error: "Terjadi kesalahan pada server!" };
   }
 };
+
+export const updateUserBadge = async (prevState: any, formData: FormData) => {
+  const { userId, badge } = Object.fromEntries(formData.entries());
+
+  const session = await getServerSession(authOptions);
+  if (session?.user?.role !== "Admin") {
+    return { error: "Hanya Admin yang bisa melakukan aksi ini." };
+  }
+
+  try {
+    await connectToDB();
+    await User.findByIdAndUpdate(userId, { badge });
+    revalidatePath("/admin");
+    return { success: "Badge berhasil diupdate." };
+  } catch (err) {
+    console.error(err);
+    return { error: "Gagal mengupdate badge." };
+  }
+};

@@ -19,16 +19,24 @@ export function NavLinks({ userRole, userBadge }: { userRole?: string, userBadge
     }
   }, [pathname]);
 
-  if (!userRole || userBadge === 'none') {
-    const homeItem = navItems.find(item => item.label === 'Home');
-    if (!homeItem || !homeItem.href) return null;
+ if (!userRole || userBadge === 'none') {
+    const guestItems = navItems.filter(
+      item => item.label === 'Home' || item.label === 'Public Tools'
+    );
 
     return (
       <nav className="flex flex-col gap-4 mt-8">
-           <Link href={homeItem.href} className={`flex items-center gap-3 rounded-lg px-3 py-2 text-gray-600 transition-all duration-200 ease-in-out hover:text-amber-600 hover:bg-amber-100 ${pathname === homeItem.href ? "bg-amber-100 text-amber-700 font-medium" : ""}`}>
-             <homeItem.icon className="h-4 w-4" />
-             {homeItem.label}
-           </Link>
+        {guestItems.map(item => {
+          if (!item.href) return null;
+          const isActive = pathname === item.href;
+          return (
+            <Link key={item.href} href={item.href} className={`flex items-center gap-3 rounded-lg px-3 py-2 text-gray-600 transition-all duration-200 ease-in-out hover:text-amber-600 hover:bg-amber-100 ${isActive ? "bg-amber-100 text-amber-700 font-medium" : ""}`}>
+              <item.icon className="h-4 w-4" />
+              {item.label}
+            </Link>
+          );
+        })}
+        
         <div className="px-3 py-2 text-center text-xs text-gray-500 bg-gray-100 rounded-lg">
            Anda harus login & memiliki badge untuk menggunakan fitur lain!
         </div>
