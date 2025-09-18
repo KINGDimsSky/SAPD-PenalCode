@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {Shield, Crown, UserPen, BookText, Scale} from 'lucide-react';
+import { Shield, Crown, UserPen, BookText, Scale } from 'lucide-react';
 
 const navItems = [
   { href: "/dashboard", label: "Penal Code", icon: Scale },
-  { href: "/dashboard/Employefile", label: "Employe File", icon: BookText },
+  { href: "/dashboard/employee-file", label: "Employe File", icon: BookText },
   { href: "/dashboard/factions", label: "Factions", icon: Shield },
   { href: "/dashboard/setup-profile", label: "Profile", icon: UserPen },
   { href: "/dashboard/admin", label: "Admin", icon: Crown, adminOnly: true },
@@ -22,12 +22,16 @@ export function NavLinks({ userRole }: { userRole?: string }) {
         if (item.adminOnly && userRole !== 'Admin') return null;
 
         return (
-          <Link key={item.href} href={item.href}
+          <Link
+            key={item.href}
+            href={item.href}
             className={`
-              flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-400 
+              flex items-center gap-3 rounded-lg px-3 py-2 text-gray-600
               transition-all duration-200 ease-in-out
-              hover:text-green-300 hover:bg-green-500/10
-              ${isActive ? "bg-green-500/20 text-green-300 font-medium" : ""}`}>
+              hover:text-amber-600 hover:bg-amber-100
+              ${isActive ? "bg-amber-100 text-amber-700 font-medium" : ""}
+            `}
+          >
             <item.icon className="h-4 w-4" />
             {item.label}
           </Link>

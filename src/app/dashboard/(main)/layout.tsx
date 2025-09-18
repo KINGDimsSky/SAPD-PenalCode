@@ -1,20 +1,25 @@
+
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { NavLinks } from "@/components/NavLink";
+import MobileNav from "@/components/MobileNav";
+import { UserProfile } from "@/components/UserProfile";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import Link from "next/link";
-import { NavLinks } from "@/components/NavLink";
-import { UserProfile } from "@/components/UserProfile";
 
-export default async function DashboardLayout({children}: {children: React.ReactNode;}) {
+export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(authOptions);
 
   return (
-    <div className="flex h-screen overflow-hidden w-full bg-black text-neutral-200">
-      <aside className="w-64 flex-col border-r border-neutral-800 bg-neutral-950 p-4 hidden md:flex">
-        <div className="flex h-full max-h-screen flex-col gap-2">
-          <div className="flex h-14 items-center px-4">
-            <Link className="flex items-center gap-2 font-semibold text-white" href="/dashboard">
-              <span className="text-lg tracking-tight uppercase">Velocity PENALCODE</span>
-            </Link>
+    <div className="flex h-screen w-full bg-gray-50 text-gray-900">
+      {/* Sidebar Desktop */}
+      <aside className="hidden md:flex w-64 flex-col border-r border-gray-200 bg-white p-4">
+        <div className="flex h-full flex-col gap-2">
+          {/* Logo */}
+          <div className="flex flex-col items-center my-6">
+            <Image src="/sagov.png" alt="Logo" width={70} height={70} priority />
+            <div className="text-lg font-semibold tracking-tight mt-1">San Andreas Portal</div>
           </div>
           <div className="flex-1">
             <NavLinks userRole={session?.user?.role} />
@@ -22,9 +27,14 @@ export default async function DashboardLayout({children}: {children: React.React
           <UserProfile user={session?.user} />
         </div>
       </aside>
-      <main className="flex flex-1 overflow-y-auto flex-col p-4 md:p-6">
-        {children}
-      </main>
+
+      {/* Navbar Mobile */}
+      <MobileNav user={session?.user} />
+
+      {/* Content */}
+      <main className="flex-1 overflow-y-auto p-4 md:p-6 pt-24">{children}</main>
     </div>
   );
 }
+
+

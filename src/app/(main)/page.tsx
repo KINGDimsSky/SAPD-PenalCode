@@ -1,9 +1,10 @@
-'use client';
+"use client";
 
 import Link from "next/link";
-import { signIn } from "next-auth/react"; 
+import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Image from "next/image";
 
 export default function HomePage() {
   const router = useRouter();
@@ -37,29 +38,87 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center">
-      <div className="flex flex-col items-center w-96 border border-white/15 rounded-lg p-6">
-        <h1 className="text-xl font-semibold tracking-tight uppercase">Velocity Penalcode</h1>
-        <p className="text-xs mt-1 font-light tracking-tight text-white/70">Welcome Back!, Please enter your Details.</p>
-        <form onSubmit={handleSubmit} className="flex flex-col w-full mt-6">
-          <label htmlFor="username" className="font-medium">Username</label>
-          <input className="p-2 text-sm rounded-lg bg-transparent border border-white/15 placeholder:text-sm mt-2" type="text" id="username" name="username" placeholder="Tyler Durden" required/> 
-          <label htmlFor="password" className="font-medium mt-4">Password</label>
-          <input className="p-2 text-sm rounded-lg bg-transparent border border-white/15 placeholder:text-sm mt-2" type="password" id="password" name="password" placeholder="***" required/>
-          
-          {error && (<p className="text-xs text-red-500 mt-2">{error}</p>)}
+    <div className="relative bg-gray-50 p-4 flex flex-col justify-center items-center min-h-screen">
+      <div className="w-full max-w-sm mx-auto bg-white border border-gray-200 rounded-lg p-6 shadow-lg sm:max-w-md">
+        {/* Logo */}
+        <div className="flex flex-col items-center gap-2 mb-8">
+          <Link
+            href="/"
+            className="flex flex-col items-center gap-2 font-semibold text-gray-800"
+          >
+            <Image
+              src="/sagov.png"
+              alt="San Andreas Government Logo"
+              width={70}
+              height={70}
+              priority
+            />
+            <div className="text-lg tracking-tight">San Andreas Portal</div>
+          </Link>
+        </div>
 
-          <button type="submit" disabled={isSubmitting}
-           className="p-2 w-full mt-6 bg-green-500 hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-all duration-300 rounded-lg text-sm">
-            {isSubmitting ? 'Logging in...' : 'Login'}
+        {/* Title */}
+        <h1 className="text-2xl font-semibold text-gray-800 text-center">
+          Welcome Back!
+        </h1>
+        <p className="text-sm text-gray-400 text-center mt-1">
+          Please enter your details to login.
+        </p>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="flex flex-col w-full mt-6 space-y-4">
+          <div>
+            <label htmlFor="username" className="block text-sm font-medium text-gray-600">
+              Username
+            </label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Tyler Durden"
+              required
+              className="input w-full mt-1 py-1 px-2 rounded-md input-bordered bg-white border-gray-300 focus:border-green-600 focus:ring-green-600 placeholder:text-sm"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-600 mt-2">
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="***"
+              required
+              className="input w-full mt-1 py-1 px-2 rounded-md input-bordered bg-white border-gray-300 focus:border-green-600 focus:ring-green-600 placeholder:text-sm"
+            />
+          </div>
+
+          {error && <p className="text-xs text-red-500 text-center">{error}</p>}
+
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="p-2 w-full mt-4 bg-green-500 hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-all duration-300 rounded-lg text-sm text-white"
+          >
+            {isSubmitting ? "Logging in..." : "Login"}
           </button>
-        </form> 
+        </form>
 
-        <div className="flex flex-col gap-2 mt-8">
-          <p className="text-xs tracking-tight flex gap-2">Don't Have an Account? <Link href={'/register'} className="font-semibold hover:text-white/50 duration-300">Register</Link></p>
+        <div className="flex flex-col gap-2 mt-8 text-center">
+          <p className="text-xs text-gray-500 tracking-tight">
+            Don't have an account?{" "}
+            <Link href="/register" className="font-semibold hover:text-gray-700 transition-colors">
+              Register
+            </Link>
+          </p>
         </div>
       </div>
-      <p className="text-xs text-white/50 tracking-tight mt-4">Powered By DimsSky & CandraDev All right Reserved</p>
+
+      <p className="text-xs text-gray-400 tracking-tight mt-4 text-center">
+        Powered By DimsSky & CandraDev. All Rights Reserved.
+      </p>
     </div>
-  )
+  );
 }

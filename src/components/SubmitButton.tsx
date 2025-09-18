@@ -14,8 +14,14 @@ export function SubmitButton({ text, loadingText }: SubmitButtonProps) {
     <button 
       type="submit" 
       disabled={pending}
-      className="p-2 w-full mt-6 bg-green-500 hover:bg-green-700 disabled:bg-gray-500 disabled:cursor-not-allowed transition-all duration-300 rounded-lg text-sm"
-    >
+      className="p-2 w-full mt-6 
+                bg-orange-300 
+                hover:bg-orange-500 
+                disabled:bg-gray-500 
+                disabled:cursor-not-allowed 
+                transition-all duration-300 
+                rounded-lg text-sm 
+                ">
       {pending ? loadingText : text}
     </button>
   );
