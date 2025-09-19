@@ -30,12 +30,12 @@ export const navItems: NavItem[] = [
     icon: Shield, 
     basePath: "/factions",
     subItems: [
-      { href: "/factions/penalcode", label: "Penal Code", requiredBadge: "SAPD" },
-      { href: "/factions/Employe-file", label: "EmployeFile", requiredBadge: "SAPD" },
+      { href: "/factions/penal-code", label: "Penal Code", requiredBadge: "SAPD" },
+      { href: "/factions/employee-file-central", label: "Employee File", requiredBadge: "SAPD" },
       { href: "/factions/sannewstools", label: "SanNews Tools", requiredBadge: "SANews"},
     ]
   },
-  { href: "/setup-profile", label: "Profile", icon: UserPen },
+  { href: "/my-profile", label: "My Profile", icon: UserPen },
   { href: "/admin", label: "Admin", icon: Crown, adminOnly: true },
 ];
 
