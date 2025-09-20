@@ -63,7 +63,7 @@ export default function HomePage() {
               name="username"
               placeholder="Tyler Durden"
               required
-              className="input w-full mt-1 py-1 px-2 rounded-md input-bordered bg-white border-gray-300 focus:border-green-600 focus:ring-green-600 placeholder:text-sm"/>
+              className="input w-full border border-gray-300 mt-1 py-1 px-2 rounded-md input-bordered bg-white  placeholder:text-sm"/>
           </div>
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-gray-600 mt-2">
@@ -73,7 +73,7 @@ export default function HomePage() {
               name="password"
               placeholder="***"
               required
-              className="input w-full mt-1 py-1 px-2 rounded-md input-bordered bg-white border-gray-300 focus:border-green-600 focus:ring-green-600 placeholder:text-sm"/>
+              className="input border border-gray-300 w-full mt-1 py-1 px-2 rounded-md input-bordered bg-white placeholder:text-sm"/>
           </div>
           {error && <p className="text-xs text-red-500 text-center">{error}</p>}
           <button

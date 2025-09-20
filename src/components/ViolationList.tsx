@@ -19,7 +19,7 @@ export function ViolationList({ violations, selectedCodes, searchTerm, onSearchC
         </p>
         <input
           type="text"
-          className="input py-1 px-2 input-bordered w-full mt-4 bg-white border-gray-300 focus:border-sky-500 focus:ring-sky-500"
+          className="input py-1 px-2 input-bordered w-full mt-4 bg-white border rounded-md border-gray-300 focus:border-sky-500 focus:ring-sky-500"
           placeholder="Search by code or name..."
           value={searchTerm}
           onChange={onSearchChange}

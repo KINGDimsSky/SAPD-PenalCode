@@ -34,8 +34,7 @@ export function UpdateBadgeForm({ userId, currentBadge }: { userId: string, curr
         type="text"
         name="badge"
         defaultValue={currentBadge}
-        className="input input-bordered input-xs w-28 bg-gray-50 border-gray-300 focus:border-blue-500 focus:ring-blue-500"
-      />
+        className="input input-bordered input-xs w-28 bg-gray-50 py-1 px-2 border border-gray-300 focus:border-blue-500 focus:ring-blue-500"/>
       <SubmitButton />
     </form>
   );

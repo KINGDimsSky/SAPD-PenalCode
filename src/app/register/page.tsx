@@ -40,7 +40,7 @@ export default function RegisterPage() {
         </p>
 
         {/* Form */}
-        <form action={formAction} className="flex flex-col w-full mt-6 space-y-4">
+        <form action={formAction} className="flex flex-col w-full mt-6 space-y-2">
           {/* Username */}
           <div>
             <label htmlFor="username" className="block text-sm font-medium text-gray-600">
@@ -52,7 +52,7 @@ export default function RegisterPage() {
               name="username"
               placeholder="Tyler Durden"
               required
-              className="input w-full mt-1 py-1 px-2 rounded-md input-bordered bg-white border-gray-300 focus:border-green-600 focus:ring-green-600 placeholder:text-sm"
+              className="input border border-gray-300 w-full mt-1 py-1 px-2 rounded-md input-bordered bg-white  focus:border-green-600 focus:ring-green-600 placeholder:text-sm"
             />
           </div>
 
@@ -67,7 +67,7 @@ export default function RegisterPage() {
               name="password"
               placeholder="***"
               required
-              className="input w-full mt-1 py-1 px-2 rounded-md input-bordered bg-white border-gray-300 focus:border-green-600 focus:ring-green-600 placeholder:text-sm"
+              className="input w-full mt-1 py-1 px-2 rounded-md input-bordered bg-white border border-gray-300 focus:border-green-600 focus:ring-green-600 placeholder:text-sm"
             />
           </div>
 
@@ -82,12 +82,14 @@ export default function RegisterPage() {
               name="confirmpword"
               placeholder="***"
               required
-              className="input w-full mt-1 py-1 px-2 rounded-md input-bordered bg-white border-gray-300 focus:border-green-600 focus:ring-green-600 placeholder:text-sm"
+              className="input w-full mt-1 py-1 px-2 rounded-md input-bordered bg-white border border-gray-300 focus:border-green-600 focus:ring-green-600 placeholder:text-sm"
             />
           </div>
 
           {/* Error Message */}
           {state?.error && <p className="text-xs text-red-500 text-center">{state.error}</p>}
+
+          <div className="mt-12"></div>
 
           {/* Submit Button */}
           <SubmitButton text="Register" loadingText="Registering..." />
